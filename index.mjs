@@ -1,10 +1,9 @@
 import { openAiUrl, webcamUrl, model, token } from './config.mjs'
 import { prompt } from './prompt.mjs'
+import { getImage } from './image.mjs'
 
 // Fetch snapshot
-const imageResponse = await fetch(webcamUrl)
-const imageBuffer = await imageResponse.arrayBuffer()
-const image = Buffer.from(imageBuffer).toString('base64')
+const image = await getImage(webcamUrl)
 
 const payload = {
   model,
